@@ -52,7 +52,7 @@ pause(0.2);
 fprintf(src, 'reset()');
 fprintf(src, 'waitcomplete()');
 
-% Channel A：Current source for driving the laser 
+% Channel A: Current source for driving the laser
 fprintf(src, 'smua.source.func = smua.OUTPUT_DCAMPS');
 fprintf(src, 'smua.source.limitv = 6');
 fprintf(src, 'smua.source.rangev = 10');
@@ -61,7 +61,7 @@ fprintf(src, 'smua.source.rangei = 3.0');
 fprintf(src, 'smua.source.output = smua.OUTPUT_ON');
 pause(0.1);
 
-% Channel B：On-chip PD current measurement
+% Channel B: On-chip PD current measurement
 fprintf(src, 'smub.source.func = smub.OUTPUT_DCVOLTS');
 fprintf(src, 'smub.source.levelv = -7');
 fprintf(src, 'smub.source.limiti = 0.05');   
@@ -78,17 +78,17 @@ cut_value      = zeros(max_iter,1);
 energy_history = zeros(max_iter,1);
 meanabsx       = zeros(max_iter,1);
 
-% 如果你希望保存每次迭代的离散自旋
+% If you want to save discrete spins at each iteration
 % spin_history = zeros(V,max_iter);
 
 %% Loop
 try
     for k = 1:max_iter
 
-        % -------- 连续自旋 --------
+        % -------- Continuous spins --------
         sp = x;
 
-        % -------- Robbins–Monro 步长（只给噪声项/或分配给不同项）--------
+        % -------- Robbins-Monro step size (applied to noise term or split across terms) --------
         beta_k1 = beta0 / ((k+1)^r1);
         sigma   = sigma0 / ((k+1)^r2);
 
