@@ -53,9 +53,3 @@ Code and supporting data for experiments related to KAUST-IPL's paper “_A Full
 
 For optical routing objective experiments, call the functions in `Optical routing/` from your own optimization driver with binary occupancy vectors of equal length.
 
-## Practical Notes
-- Keep all path vectors (`xA`...`xE`) aligned to `numel(mesh.roads)`.
-- `F_enter` assumes each IN/OUT port connects to exactly one road.
-- `F_unit` relies on fixed road numbering; if mesh indexing changes, update `build_node_eq4_table` accordingly.
-- Keep all comments and documentation in English for consistency.
-
