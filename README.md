@@ -1,6 +1,6 @@
 # Photonic Ising Machine
 
-Code and supporting data for experiments related to a fully integrated quantum-dot laser Ising machine, including a hardware-in-the-loop Max-Cut solver and optical-routing cost/constraint functions.
+Code and supporting data for experiments related to KAUST-IPL's paper “_A Fully Integrated Quantum-Dot Laser Ising Machine_", including a hardware-in-the-loop Max-Cut solver and optical-routing cost/constraint functions.
 
 ## Repository Structure
 
@@ -10,8 +10,8 @@ Code and supporting data for experiments related to a fully integrated quantum-d
 - `QD_laser_Ising_solver.m`: main MATLAB script for running a photonic Ising optimization loop with a source measure unit (SMU) over GPIB.
 
 ### `Max-cut/`
-- `G22.mat`: benchmark graph data file for Max-Cut experiments.
-- `G67.mat`: benchmark graph data file for Max-Cut experiments.
+- `G22.mat`: benchmark graph data file for G22 Max-Cut experiments.
+- `G67.mat`: benchmark graph data file for G67 Max-Cut experiments.
 - `J_150x150_square_lattice.mat`: large lattice-style coupling/graph data for Max-Cut-style Ising tests.
 
 > Note: `.mat` files are MATLAB binary data containers. Their exact variables are read at runtime in MATLAB.
@@ -23,45 +23,6 @@ Code and supporting data for experiments related to a fully integrated quantum-d
 - `F_enter.m`: enforces source/destination port entry constraints for each path.
 - `F_unit.m`: enforces node-level unit constraints on a manually indexed mesh topology.
 - `mesh_map.mat`: mesh topology/support data for routing experiments.
-
-## File-by-file Functional Notes
-
-### 1) `QD_laser_Ising_solver.m`
-This is the main experimental script. It:
-1. Clears existing instrument handles.
-2. Loads graph data (`xx.mat`, expected to contain `Problem.A`).
-3. Builds Ising/Max-Cut terms from the adjacency matrix.
-4. Runs an iterative stochastic update with Robbins-Monro style decay.
-5. Uses measured laser/photodetector nonlinearity as the activation function via real hardware I/O.
-6. Tracks cut value and energy over iterations.
-7. Plots optimization traces and prints final metrics.
-
-Important placeholders (`**`) must be replaced before execution:
-- `alpha`, `beta`, `r1`, `r2`
-- `I_min`, `I_max`, `P_lo`, `P_hi`
-
-### 2) `Optical routing/F_cost.m`
-Returns the objective cost equal to total occupied roads across five candidate routes (`xA` to `xE`). Also returns per-route length details.
-
-### 3) `Optical routing/F_road.m`
-Returns a penalty based on pairwise overlap of route occupancy vectors. If two routes choose the same road index, the penalty increases.
-
-### 4) `Optical routing/F_balance.m`
-Returns a balancing penalty so the five routes have similar lengths. The function scales each route length against total load and squares deviations.
-
-### 5) `Optical routing/F_enter.m`
-Builds per-path target vectors on port-connected roads and penalizes deviations. This enforces each route to activate only its own source and destination port roads.
-
-### 6) `Optical routing/F_unit.m`
-Applies topology constraints at H/V nodes using a hard-coded road-index mapping table (`build_node_eq4_table`).
-- H nodes: flow conservation style penalty.
-- V nodes: crossing consistency penalty.
-
-The function also prepares debug output structures.
-
-### 7) Data files (`*.mat`)
-- Store benchmark graph and mesh data consumed by scripts/functions.
-- These are not source code files and are expected to be loaded from MATLAB.
 
 ## Environment Requirements
 
