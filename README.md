@@ -27,6 +27,7 @@ Code and supporting data for experiments related to KAUST-IPL's paper “_A Full
 ## Environment Requirements
 
 ## Operating system
+This package is supported for Windows. The package has been tested on the following systems:
 - Windows 11
   
 ## MATLAB
