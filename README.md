@@ -24,6 +24,13 @@ Code and supporting data for experiments related to KAUST-IPL's paper “_A Full
 - `F_unit.m`: enforces node-level unit constraints on a manually indexed mesh topology.
 - `mesh_map.mat`: mesh topology/support data for routing experiments.
 
+## Hardware Requirements
+
+- The package requires only a standard computer with enough RAM to support the operations defined by a user. For minimal performance, this will be a computer with about 2 GB of RAM. For optimal performance, we recommend a computer with the following specs:
+
+- RAM: 16+ GB
+- CPU: 4+ cores, 3.3+ GHz/core
+
 ## Environment Requirements
 
 ## Operating system
@@ -31,7 +38,9 @@ This package is supported for Windows. The package has been tested on the follow
 - Windows 11
   
 ## MATLAB
+
 - Matlab 2025b
+-  Installing Matlab 2025b version on Windows 11.
 - MATLAB with basic matrix functionality.
 - Instrument Control Toolbox (required for `gpib`, `instrfind`, `fopen/fclose` on instruments).
 
