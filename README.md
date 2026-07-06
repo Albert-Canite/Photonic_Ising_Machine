@@ -26,7 +26,11 @@ Code and supporting data for experiments related to KAUST-IPL's paper “_A Full
 
 ## Environment Requirements
 
+## Operating system
+- Windows 11
+  
 ## MATLAB
+- Matlab 2025b
 - MATLAB with basic matrix functionality.
 - Instrument Control Toolbox (required for `gpib`, `instrfind`, `fopen/fclose` on instruments).
 
