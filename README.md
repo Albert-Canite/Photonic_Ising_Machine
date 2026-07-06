@@ -52,7 +52,7 @@ This package is supported for Windows. The package has been tested on the follow
 ## Optional workflow
 - For purely algorithmic simulation, you can replace hardware I/O sections with a software nonlinearity model.
 
-## Quick Start
+## Demo
 
 1. Open MATLAB and set working directory to repository root.
 2. Prepare graph input file expected by the solver:
